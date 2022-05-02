@@ -20,6 +20,7 @@ contract Ballot {
 
     Proposal[] public proposals;
 
+    // Store the time when voting starts and the duration of the vote.
     uint private startTime;
     uint private voteDuration;
 
@@ -69,6 +70,7 @@ contract Ballot {
         }
     }
 
+    // Modifier that checks whether vote has started and not entend.
     modifier voteEnded() {
         require(startTime != 0, "Voting has not yet started.");
         require(block.timestamp - startTime < voteDuration, "Voting has already finished.");
@@ -100,8 +102,9 @@ contract Ballot {
         _winnerName = proposals[winningProposal()].name;
     }
 
+    // Starts the vote.
     function startVote(uint _voteDuration) public {
-        require(msg.sender == chairperson, "Not allowed to start the vote.")
+        require(msg.sender == chairperson, "Not allowed to start the vote.");
         require(startTime == 0, "Voting has already started.");
 
         startTime = block.timestamp;
