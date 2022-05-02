@@ -72,7 +72,7 @@ The first part of the Solidity assignment is a set/get contract. The code can be
     \caption*{The set/get contract deployed.}
 \end{figure}
 
-The second part involves modifying a Ballot contract by adding a time constraint on the vote function. This was achieved by creating the modifier \texttt{voteEnded} that checks whether the voted has already ended. Additionally, I took the liberty of declaring the variable \texttt{voteDuration} that stores the vote duration and the creating the function \texttt{startVote} that can be called by the chairperson so the vote can be started with a certain duration. The modifier \texttt{voteEnded} also checks if the vote is active, so that no votes are defined before the voting process starts. The code can be found \href{https://github.com/dbsc/zku/blob/main/background_assignment/helloworld.sol}{here}.
+The second part involves modifying a Ballot contract by adding a time constraint on the vote function. This was achieved by creating the modifier \texttt{voteEnded} that checks whether the voted has already ended. Additionally, I took the liberty of declaring the variable \texttt{voteDuration} that stores the vote duration and the creating the function \texttt{startVote} that can be called by the chairperson so the vote can be started with a certain duration. The modifier \texttt{voteEnded} also checks if the vote is active, so that no votes are defined before the voting process starts. The code can be found \href{https://github.com/dbsc/zku/blob/main/background_assignment/voting.sol}{here}.
 
 \begin{figure}[h]
     \centering
