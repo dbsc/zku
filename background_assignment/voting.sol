@@ -70,7 +70,7 @@ contract Ballot {
         }
     }
 
-    // Modifier that checks whether vote has started and not entend.
+    // Modifier that checks whether vote has started and not ended.
     modifier voteEnded() {
         require(startTime != 0, "Voting has not yet started.");
         require(block.timestamp - startTime < voteDuration, "Voting has already finished.");
