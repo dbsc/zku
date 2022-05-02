@@ -10,7 +10,7 @@ contract Ballot {
     }
 
     struct Proposal {
-        bytes32 name;
+        string name;
         uint voteCount;
     }
 
@@ -23,7 +23,7 @@ contract Ballot {
     uint private startTime;
     uint private voteDuration;
 
-    constructor(bytes32[] memory proposalNames) {
+    constructor(string[] memory proposalNames) {
         chairperson = msg.sender;
         voters[chairperson].weight = 1;
 
@@ -56,7 +56,7 @@ contract Ballot {
 
         while (voters[to].delegate != address(0)) {
             to = voters[to].delegate;
-            require(to != msg.sender, "Found loop in delegation");
+            require(to != msg.sender, "Found loop in delegation.");
         }
 
         sender.voted = true;
@@ -96,12 +96,13 @@ contract Ballot {
         }
     }
 
-    function winnerName() external view returns (bytes32 _winnerName) {
+    function winnerName() external view returns (string memory _winnerName) {
         _winnerName = proposals[winningProposal()].name;
     }
 
     function startVote(uint _voteDuration) public {
-        require(startTime != 0, "Voting has already started.");
+        require(msg.sender == chairperson, "Not allowed to start the vote.")
+        require(startTime == 0, "Voting has already started.");
 
         startTime = block.timestamp;
         voteDuration = _voteDuration;
