@@ -4,5 +4,6 @@
 *.log
 *.pdf
 *.synctex.gz
+*.pyg
 *.out
 .DS_Store
