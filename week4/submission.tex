@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{listings}
+
+\newcommand\email{andredbsc@gmail.com}
+\newcommand\discord{dbsc\#3718}
+
+\title{ZK University \\[4pt] \normalsize\textsc{Week 4 Submission}}
+\author{André Dal Bosco \\ \small{\email \quad \discord}}
+
+\begin{document}
+\maketitle
+
+\section*{Theoretical questions}
+\begin{itemize}
+    \item Explain briefly the various ways in which the blockchain can enable people to sync to their network effectively. \par There exist several types of nodes, and each blockchain client may allow for different types of nodes. For example, a traditional ethereum client allows full nodes, light nodes, and archival nodes, each having its use case. As for the most practical and effective syncing method is the light node, since it allows one to only sync headers, instead of the whole blockchain history.
+    \item Give a high level overview of how Plumo is able to compress a sequence of blocks into a single proof. \par It uses a scheme where the $\pi_n$ proof is valid for the $n$th epoch, plus it verifies all the previous proofs as wheel ($\pi_0, ..., \pi_{n-1}$). The result is that $\pi_n$ verifies the header delivered.
+    \item Although both Harmony and Celo are PoS chains, plumo is currently not compatible with Harmony mostly due to differences in their consensus mechanisms. Cite two differences of these two blockchain's consensus algorithms. \par Harmony uses FBFT, while Celo uses IBFT. Additionally, in Celo, no validator takes the role of leader, i.e.\ all validators are equivalent.
+\end{itemize}
+
+\section*{Final Project}
+\begin{itemize}
+    \item Evaluate and rank your three project ideas (and your new idea(s), if any) from last week in terms of implementation difficulty, potential user base, and the importance of ZK in the idea. \par I have three ideas, two of which are games. The first two ideas were outlined in the previous assignment. My third idea is yet another game, where a two players basically compete against each other by proposing one another a six letter word. This six letter word must be cracked by the opponent, and that which does it first wins. Zero knowledge can be applied to ensure players are not cheating. The games implementation to me is very clear, but my idea of making a platform for whistleblowers is not yet very clear how I could apply zero knowledge, and I plan to chat about this with you guys. As for importance, I believe this last idea has a high importance, since most whistleblowers look for a medium to be heard without necessarily revealing their identity. Maybe something to do with tornadoing information around, but I'm not exactly sure. As to potential user base, I believe that the games would possibly a easier and possibly bigger user base.
+    \item Which of your ideas are you more inclined to do as your final project? Why? I'm not sure. If I understand better what I wanna do with the whistleblower better, I will go for it. If my mind does not become clear enough to proceed with the idea, I'll go for the game I just proposed.
+\end{itemize}
+
+\section*{Frontend Assignment}
+\begin{itemize}
+    \item Study the codebase and briefly explain the webpack configurations in the NextJS config file. \par Basically, if we are not on a server (that is, on a client), then webpack provides the \texttt{global} plugin and redirects a series of resolving requests to false.
+\end{itemize}
+\end{document}

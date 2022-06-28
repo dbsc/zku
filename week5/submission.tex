@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{listings}
+
+\newcommand\email{andredbsc@gmail.com}
+\newcommand\discord{dbsc\#3718}
+
+\title{ZK University \\[4pt] \normalsize\textsc{Week 5 Submission}}
+\author{André Dal Bosco \\ \small{\email \quad \discord}}
+
+\begin{document}
+\maketitle
+
+\subsection*{Scalability}
+\begin{itemize}
+    \item Choose two specific blockchain scaling solutions and compare their implementations regarding the different trade-offs they make. \par We have mainly (on-chain scaling) sharding and rollups (off-chain scaling). Sharding main goal is to increase TPS without necessarily focusing on gas price reduction, while rollups tend to be able to save up gas since they can submit a lot of transactions at once to the Ethereum chain. While sharding adds a considerable amount of complexity to the consensus and increases the amount of raw data that is passed around nodes, rollups are built on top of Ethereum as L2s and tend to sacrifice decentralization in favour of scalability.
+    \item ZkSync and StarkNet are two of the most promising zkRollups currently available with differing strategies. Briefly explain the differentiations between the two rollups and your conclusion on which is more likely to win the zkRollup wars. \par After a brief reading I see that StarkNet tends to focus more on computation scalability, while ZkSync focuses on lowering gas and increasing TPS. I don't really which one would win the ``wars'' but I see a lot of value in StarkNet, as being able to compute resource intensive tasks on a off-chain L2 seems like a great advantage to me. This opens up new possibilities which go beyond just improving user experience with decreased gas.
+\end{itemize}
+
+\subsection*{Interoperability}
+\begin{itemize}
+    \item Briefly explain what would be the different components required to create a bridge application for token transfers. Assume ERC20 tokens are being transferred between EVM chains for simplicity. \par We basically need 3 components: a smart contract that receives the tokens on one side, another smart contract that mint the token at the other side, and a kind of validator (or federator according to some docs) that can verify that the operation ocurred and can direct a trusted call to the minter contract.
+    \item Aztec utilizes a set of zero-knowledge proofs to shield both native assets and assets that conform with certain standards (e.g. ERC20) on a Turing-complete general-purpose computation. Briefly explain the concept of AZTEC Note and how the notes are used to privately represent various assets on a blockchain. \par AZTEC Notes are encrypted representations of value that exist within the AZTEC ecosystem. The Notes are basically UTXOs, and the balance of a user is obtained by the sum of the user's notes. The AZTEC protocol enables private transactions by empolying zero-knowledge proofs.
+\end{itemize}
+
+\subsection*{Final Project}
+\susubsection*{Proposal Overview}
+My proposal is to launch a zk-wordle game 
+\end{document}

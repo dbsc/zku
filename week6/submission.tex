@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{listings}
+
+\newcommand\email{andredbsc@gmail.com}
+\newcommand\discord{dbsc\#3718}
+
+\title{ZK University \\[4pt] \normalsize\textsc{Week 5 Submission}}
+\author{André Dal Bosco \\ \small{\email \quad \discord}}
+
+\begin{document}
+\maketitle
+
+\subsection*{Worldcoin}
+\begin{itemize}
+    \item WorldCoin aims to provide tokens to billions $(\approx\!10^9)$ of people. Write down one technical challenge that you can think of when using Semaphore for such user verifications and suggest how they can solve this. \par I think that gas might be a problem, since if each person conducts individual transactions on the blockchain to insert and verify their identities, then we would have a major overhead. I suppose this could be solved by aggregating multiple proofs into one, instead of verifying them one by one.
+    \item In the example application, they use ERC20 token for Airdrop. The actual WorldCoin uses Hubble to efficiently airdrop tokens to users. Explain what Hubble is and how it works. \par Hubble is a optimistic rollup that scales Ethereum's TPS by a factor of 100. It's used because it optmizes for simple token transfers and reduces the data stored on chain compared to other solutions. The rollup is basically a contract where people can submit their transactions, and if someone submits an invalid transaction and a third party eventually verifies that said transaction was not valid, then the contract reverts to the last state where the accounts' balances were valid.
+\end{itemize}
+
+\subsection*{Polygon Nightfall}
+\begin{itemize}
+    \item Go over their smart contracts (linked above) and explain in a few sentences how Polygon NightFall can achieve private transfer of ERC tokens. \par A user (Transactor) can transfer by generating ZK proof of the transaction, so that they won't reveal such as destination and value of the transaction. This Transactor can call the transfer function on the Shield contract, and afterwards a Proposer picks up this transaction and includes it in a block.
+    \item Explain in a few sentences how do private NFT Marketplaces work using their protocol. \par I suppose one could limit the access of a NFT Marketplace to select addresses and enabling private transfers using the protocol.
+\end{itemize}
+
+\subsection*{Tooling}
+\begin{itemize}
+    \item Explain what functionalities are supported in Foundry. What are the things not supported compared to Hard Hat? \par Foundry supports mainly contract compiling and testing. Hard Hat has the plus of being able to deploy contracts to any network, but in general it's not as fast as Foundry.
+    \item Take a look at SparseMerkleTree repository. Explain the key difference between SparseMerkleTree and IncrementalMerkleTree. What is the benefit of using SparseMerkleTree? \par Sparse Merkle trees are much bigger than incremental ones given that they have the same parameters, and the big difference here is that with sparse trees, we can prove non inclusion, and this is the benefit.
+\end{itemize}
+
+\begin{center}
+    \subsection*{Final Project}
+\end{center}
+I'll describe my project in this PDF since I didn't in the last one. I have no significant progress as of now, but I'll have some next week.
+\bigbreak
+
+\subsection*{zkMaze}
+zkMaze is a multiplayer maze game built on top of the Ethereum blockchain. It allows players to join a match and solve a maze in a ``race manner'', with a visible realtime leaderboard of who were the first players to solve the proposed maze. When a player correctly solves the maze, the webclient generates a zero-knowledge proof which is verified on-chain. This allows players to prove that they have solved the puzzle without surrendering the solution to other players that may still be trying to solve it.
+
+\subsection*{Design}
+The players join a queue to start the game, and once it's started, a random maze is generated (probably using Prim's algorithm). Once the maze is set, the match starts, and each player that solves the maze submits a proof that they have solved the maze that is verified on-chain. I'll start with a working visual interface and working circom circuits, and then proceed to the smart contracts.
+
+\subsection*{Related Projects}
+I have conducted a brief search on ZK maze games, but I have not found any (I tried searching for ``zkmaze github'' on Google which didn't show anything). I do not know the reason why this is, maybe this doesn't seem like a very exciting idea to other people or perhaps I'm not that good at googling things.
+
+\subsection*{Purpose}
+This is a project that people can surely have fun on, but it would have to be more dynamic and less boring to attract a user base. The MVP that I'll be developing will be as simple as possible, and will serve to learn more about the ZK ecosystem.
+
+\subsection*{Roadmap}
+\begin{itemize}
+    \item June 20th: Progress report + partially functioning product (frontend already working, circom circuits done)
+    \item June 27th: Testnet launch with documentation
+    \item July 4th: Mainnet launch
+\end{itemize}
+
+
+
+
+\end{document}
